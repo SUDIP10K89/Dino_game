@@ -1,0 +1,185 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables for Easy Customization */
+:root {
+  --dino-width: min(50px, 12vw);
+  --dino-height: min(50px, 12vw);
+  --cactus-width: min(45px, 11vw);
+  --cactus-height: min(45px, 11vw);
+  --container-height: min(300px, 40vh);
+  --button-size: min(60px, 100px);
+  --base-font-size: min(16px, 4vw);
+}
+
+body {
+  background-color: #121212;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  font-size: var(--base-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  background-image: url('bg.png'); 
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(56, 255, 255);
+  width: 500px;
+  height: var(--container-height);
+  overflow: hidden;
+  border: min(5px, 1vw) solid #06d540;
+  animation: env 10s infinite linear;
+  width: 500px;
+  position: relative;
+  border-radius: 12px;
+}
+
+@keyframes env {
+  0%, 50%, 100% {
+    height: var(--container-height);
+  }
+}
+
+.dino {
+  background-image: url('dino.png');
+  background-size: 100%;
+  width: var(--dino-width);
+  height: var(--dino-height);
+  position: absolute;
+  top: calc(100% - calc(var(--dino-height)));
+  left: min(50px, 10vw);
+}
+
+.jump {
+  animation: jump 0.8s 1;
+}
+
+@keyframes jump {
+  0% {
+    top: calc(100% - calc(var(--dino-height) + 38px));
+  }
+  50% {
+    top: calc(100% - calc(var(--dino-height) + 120px));
+  }
+  100% {
+    top: calc(100% - calc(var(--dino-height) + 38px));
+  }
+}
+
+.cactus {
+  background-image: url('cactus.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: var(--cactus-width);
+  height: var(--cactus-height);
+  position: absolute;
+  top: calc(100% - calc(var(--cactus-height)));
+  left: -200px;
+}
+
+.obstacle {
+  animation: obstacleAni 4s linear infinite;
+}
+
+@keyframes obstacleAni {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -50px;
+  }
+}
+
+.controls {
+  position: fixed;
+  bottom: min(20px, 5vh);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: min(10px, 2vw);
+}
+
+
+.gameover {
+  visibility: hidden;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: blueviolet;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3vh;
+}
+
+.gameover p{
+  color: white;
+  font-size: min(2rem, 8vw);
+  font-weight: bold;
+}
+.score {
+  position: absolute;
+  top: min(10px, 2vh);
+  color: rgb(67, 164, 42);
+  right: min(10px, 2vw);
+  padding: min(5px, 1vh) min(10px, 2vw);
+  border-radius: min(10px, 2vw);
+  font-size: min(1rem, 4vw);
+  font-weight: bold;
+}
+
+.restart {
+  display: inline-block;
+  margin: min(20px, 4vh) auto;
+  padding: min(10px, 2vh) min(20px, 4vw);
+  background-color: rgb(30, 203, 30);
+  border: none;
+  color: white;
+  font-size: min(1rem, 4vw);
+  border-radius: min(5px, 1vw);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.restart:hover {
+  background-color: rgb(51, 188, 51);
+}
+
+.gameControllers{
+  display: flex;
+  gap: min(10px, 2vw);
+  position: fixed;
+  bottom: 100px;
+}
+
+.gameControllers button{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: none;
+}
+
+
+
+@media (min-width: 2000px) {
+  :root {
+    --container-height: 300px;
+    --dino-width: 70px;
+    --dino-height: 70px;
+    --cactus-width: 65px;
+    --cactus-height: 65px;
+    --button-size: 80px;
+    --base-font-size: 18px;
+  }
+}
+
