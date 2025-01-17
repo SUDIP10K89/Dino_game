@@ -159,7 +159,7 @@ body {
   display: flex;
   gap: min(10px, 2vw);
   position: fixed;
-  bottom: 100px;
+  bottom: 30px;
 }
 
 .gameControllers button{
