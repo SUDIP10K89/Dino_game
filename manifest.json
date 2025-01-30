@@ -3,12 +3,7 @@
     "name": "Dino",
     "icons": [
         {
-            "src": "css/dino.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "css/dino.png",
+            "src": "logo.png",
             "sizes": "512x512",
             "type": "image/png"
         }
