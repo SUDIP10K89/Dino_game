@@ -92,3 +92,50 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent the default browser install prompt
+  event.preventDefault();
+  
+  // Save the event for later use
+  deferredPrompt = event;
+
+  // Show the custom install pop-up
+  showInstallPromotion();
+});
+function showInstallPromotion() {
+  const installContainer = document.getElementById('installContainer');
+  installContainer.style.display = 'block';
+}
+const installButton = document.getElementById('installButton');
+const cancelButton = document.getElementById('cancelButton');
+const installContainer = document.getElementById('installContainer');
+
+installButton.addEventListener('click', () => {
+  // Hide the pop-up
+  installContainer.style.display = 'none';
+
+  // Show the browser's install prompt
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      // Clear the saved prompt
+      deferredPrompt = null;
+    });
+  }
+});
+
+// Handle the "Not Now" button
+cancelButton.addEventListener('click', () => {
+  installContainer.style.display = 'none';
+});
