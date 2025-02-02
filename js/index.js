@@ -18,7 +18,7 @@ jump.onclick = () => {
   dino.classList.add('jump');
   setTimeout (()=> {
     dino.classList.remove('jump');
-  }, 600)};
+  }, 6000)};
 
 left.onclick = () => {
   dinoX = parseInt(window.getComputedStyle(dino, null).getPropertyValue('left'));
