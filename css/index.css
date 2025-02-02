@@ -59,7 +59,7 @@ body {
 }
 
 .jump {
-  animation: jump 0.8s 1;
+  animation: jump 10s 1;
 }
 
 @keyframes jump {
